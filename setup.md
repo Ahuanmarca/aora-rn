@@ -1,5 +1,7 @@
 # Setup
 
+## Initial Setup
+
 Steps followed for the initial setup with Expo CLI.
 
 Create a blank project with Expo CLI.
@@ -30,4 +32,44 @@ Deep Link scheme on `app.json` by adding the following line. This is used to dee
 {
   "scheme": "aora-rn"
 }
+```
+
+## NativeWind Setup
+
+Setup NativeWind (Tailwind CSS for React Native). Following instructions from NativeWind web site:
+
+https://www.nativewind.dev/quick-starts/expo
+
+``` bash
+npm install nativewind
+npm install --save-dev tailwindcss@3.3.2
+npx tailwindcss init
+```
+
+Modify `tailwind.config.js`
+
+``` javascript
+// tailwind.config.js
+
+module.exports = {
+- content: [],
++ content: ["./App.{js,jsx,ts,tsx}", "./<custom directory>/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Modify `babel.config.js`
+
+``` javascript
+// babel.config.js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["babel-preset-expo"],
++   plugins: ["nativewind/babel"],
+  };
+};
 ```
