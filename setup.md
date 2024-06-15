@@ -73,3 +73,11 @@ module.exports = function (api) {
   };
 };
 ```
+
+## Appwrite
+
+Install SDK
+
+``` bash
+npx expo install react-native-appwrite react-native-url-polyfill
+```
